@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'VNC Server' target in the 'VNC Server' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
