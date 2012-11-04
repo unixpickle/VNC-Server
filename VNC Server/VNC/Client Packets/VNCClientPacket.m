@@ -10,6 +10,7 @@
 #import "VNCSetPixelFormat.h"
 #import "VNCSetEncodings.h"
 #import "VNCFBUpdateRequest.h"
+#import "VNCKeyboardEvent.h"
 #import "VNCPointerEvent.h"
 
 @implementation VNCClientPacket
@@ -18,6 +19,7 @@
     NSDictionary * dict = @{@0: [VNCSetPixelFormat class],
                             @2: [VNCSetEncodings class],
                             @3: [VNCFBUpdateRequest class],
+                            @4: [VNCKeyboardEvent class],
                             @5: [VNCPointerEvent class]};
     return [dict objectForKey:[NSNumber numberWithUnsignedChar:type]];
 }

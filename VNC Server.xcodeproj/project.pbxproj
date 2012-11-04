@@ -219,10 +219,10 @@
 				FAD57EFF1646C7A200D2AD78 /* VNCSetEncodings.m */,
 				FAD57F041646C9D800D2AD78 /* VNCFBUpdateRequest.h */,
 				FAD57F051646C9D800D2AD78 /* VNCFBUpdateRequest.m */,
-				FAD57F5F1647127300D2AD78 /* VNCPointerEvent.h */,
-				FAD57F601647127300D2AD78 /* VNCPointerEvent.m */,
 				FAD57F63164717B700D2AD78 /* VNCKeyboardEvent.h */,
 				FAD57F64164717B700D2AD78 /* VNCKeyboardEvent.m */,
+				FAD57F5F1647127300D2AD78 /* VNCPointerEvent.h */,
+				FAD57F601647127300D2AD78 /* VNCPointerEvent.m */,
 			);
 			path = "Client Packets";
 			sourceTree = "<group>";

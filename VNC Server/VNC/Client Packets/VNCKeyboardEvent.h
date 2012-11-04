@@ -8,6 +8,12 @@
 
 #import "VNCClientPacket.h"
 
-@interface VNCKeyboardEvent : VNCClientPacket
+@interface VNCKeyboardEvent : VNCClientPacket {
+    UInt8 downFlag;
+    UInt32 key;
+}
+
+@property (readonly) UInt8 downFlag;
+@property (readonly) UInt32 key;
 
 @end

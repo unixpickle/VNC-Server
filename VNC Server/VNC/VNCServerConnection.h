@@ -13,6 +13,7 @@
 #import "VNCFBUpdateRequest.h"
 #import "VNCFileHandle.h"
 #import "VNCFrameBuffer.h"
+#import "VNCKeyboardEvent.h"
 #import "VNCPixelEncoder.h"
 #import "VNCPointerEvent.h"
 #import "VNCServerInitPacket.h"
@@ -37,6 +38,7 @@ typedef enum {
 - (void)serverConnectionPixelsEncodable:(VNCServerConnection *)connection;
 - (void)serverConnection:(VNCServerConnection *)connection regionRequested:(VNCPixelRegion)region;
 - (void)serverConnection:(VNCServerConnection *)connection pointerEvent:(VNCPointerEvent *)event;
+- (void)serverConnection:(VNCServerConnection *)connection keyboardEvent:(VNCKeyboardEvent *)event;
 
 @end
 

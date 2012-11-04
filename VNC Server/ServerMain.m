@@ -54,8 +54,8 @@
     NSLog(@"error: %@", error);
 }
 
-- (void)serverConnection:(VNCServerConnection *)connection pointerEvent:(VNCPointerEvent *)event {
-    NSLog(@"pointer event: %@", event);
+- (void)serverConnection:(VNCServerConnection *)connection keyboardEvent:(VNCKeyboardEvent *)event {
+    NSLog(@"keyboard event: %@", event);
 }
 
 @end

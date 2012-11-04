@@ -302,6 +302,8 @@
                     [delegate serverConnectionPixelsEncodable:self];
                 }
             });
+        } else if ([packet isKindOfClass:[VNCSetPixelFormat class]]) {
+            pixelFormat = [(VNCSetPixelFormat *)packet pixelFormat];
         } else if ([packet isKindOfClass:[VNCFBUpdateRequest class]]) {
             VNCFBUpdateRequest * updateReq = (VNCFBUpdateRequest *)packet;
             VNCPixelRegion region;
@@ -318,6 +320,12 @@
             dispatch_sync(dispatch_get_current_queue(), ^{
                 if ([delegate respondsToSelector:@selector(serverConnection:pointerEvent:)]) {
                     [delegate serverConnection:self pointerEvent:(VNCPointerEvent *)packet];
+                }
+            });
+        } else if ([packet isKindOfClass:[VNCKeyboardEvent class]]) {
+            dispatch_sync(dispatch_get_current_queue(), ^{
+                if ([delegate respondsToSelector:@selector(serverConnection:keyboardEvent:)]) {
+                    [delegate serverConnection:self keyboardEvent:(VNCKeyboardEvent *)packet];
                 }
             });
         }
