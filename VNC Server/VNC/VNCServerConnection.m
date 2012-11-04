@@ -57,6 +57,20 @@
 }
 
 - (BOOL)prepareToSendRegions:(NSUInteger)numRegions {
+    if ([pixelEncoder.formatter hasColorMap]) {
+        VNCColorMap * map = pixelEncoder.formatter.colorMap;
+        if ([map numberOfChanges] > 0) {
+            VNCColorMapUpdate * update = [[VNCColorMapUpdate alloc] init];
+            update.firstColor = [map startOfChanges];
+            update.numberOfColors = [map numberOfChanges];
+            update.colorMap = map;
+            NSData * data = [update encodePacket];
+            if (![handle writeData:[data bytes] ofLength:[data length]]) {
+                return NO;
+            }
+            [map markNoChanges];
+        }
+    }
     UInt16 typeAndPadding = 0;
     UInt16 numberBig = CFSwapInt16HostToBig(1);
     if (![handle writeData:&typeAndPadding ofLength:2]) return NO;

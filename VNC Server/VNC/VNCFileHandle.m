@@ -12,6 +12,8 @@
 
 - (id)initWithFileDescriptor:(int)anFd {
     if ((self = [super init])) {
+        int set = 1;
+        setsockopt(anFd, SOL_SOCKET, SO_NOSIGPIPE, (void *)&set, sizeof(int));
         fd = anFd;
         lock = [[NSLock alloc] init];
         fileHandle = [[NSFileHandle alloc] initWithFileDescriptor:fd closeOnDealloc:NO];

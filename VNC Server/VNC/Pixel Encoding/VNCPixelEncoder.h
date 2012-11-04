@@ -21,6 +21,8 @@ typedef struct {
     VNCPixelFormatter * formatter;
 }
 
+@property (readonly) VNCPixelFormatter * formatter;
+
 + (Class)preferredEncoderFromChoices:(NSArray *)numbers;
 
 - (id)initWithFormatter:(VNCPixelFormatter *)aFormatter;

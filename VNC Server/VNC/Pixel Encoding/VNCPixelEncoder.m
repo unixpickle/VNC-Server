@@ -12,6 +12,8 @@
 
 @implementation VNCPixelEncoder
 
+@synthesize formatter;
+
 + (Class)preferredEncoderFromChoices:(NSArray *)numbers {
     NSDictionary * dictionary = @{@0: [VNCRawPixelEncoder class],
                                   @16: [VNCZRLEPixelEncoder class]};

@@ -7,6 +7,7 @@
 //
 
 #import "VNCHandle.h"
+#include <sys/socket.h>
 
 @interface VNCFileHandle : VNCHandle {
     NSFileHandle * fileHandle;

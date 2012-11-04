@@ -39,6 +39,7 @@
 		FAD57F56164704E800D2AD78 /* fecessquare.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = FAD57F55164704E500D2AD78 /* fecessquare.jpg */; };
 		FAD57F611647127300D2AD78 /* VNCPointerEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD57F601647127300D2AD78 /* VNCPointerEvent.m */; };
 		FAD57F65164717B700D2AD78 /* VNCKeyboardEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD57F64164717B700D2AD78 /* VNCKeyboardEvent.m */; };
+		FAD57F6916471EA700D2AD78 /* VNCColorMapUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD57F6816471EA700D2AD78 /* VNCColorMapUpdate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -116,6 +117,8 @@
 		FAD57F601647127300D2AD78 /* VNCPointerEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VNCPointerEvent.m; sourceTree = "<group>"; };
 		FAD57F63164717B700D2AD78 /* VNCKeyboardEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VNCKeyboardEvent.h; sourceTree = "<group>"; };
 		FAD57F64164717B700D2AD78 /* VNCKeyboardEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VNCKeyboardEvent.m; sourceTree = "<group>"; };
+		FAD57F6716471EA700D2AD78 /* VNCColorMapUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VNCColorMapUpdate.h; sourceTree = "<group>"; };
+		FAD57F6816471EA700D2AD78 /* VNCColorMapUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VNCColorMapUpdate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +194,8 @@
 				FAD57F281646E3DF00D2AD78 /* Pixel Formatting */,
 				FAD57EE41646C58600D2AD78 /* Client Packets */,
 				FAD57EE51646C58600D2AD78 /* Initialization */,
+				FAD57F6716471EA700D2AD78 /* VNCColorMapUpdate.h */,
+				FAD57F6816471EA700D2AD78 /* VNCColorMapUpdate.m */,
 				FAD57F0A1646CAB100D2AD78 /* VNCFileHandle.h */,
 				FAD57F0B1646CAB100D2AD78 /* VNCFileHandle.m */,
 				FAD57F3F1646E48000D2AD78 /* VNCFrameBuffer.h */,
@@ -357,6 +362,7 @@
 				FAD57F521646F70600D2AD78 /* VNCZRLEPixelEncoder.m in Sources */,
 				FAD57F611647127300D2AD78 /* VNCPointerEvent.m in Sources */,
 				FAD57F65164717B700D2AD78 /* VNCKeyboardEvent.m in Sources */,
+				FAD57F6916471EA700D2AD78 /* VNCColorMapUpdate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,7 @@
 
 #import "VNCAuthFlow.h"
 #import "VNCClientPacket.h"
+#import "VNCColorMapUpdate.h"
 #import "VNCFBUpdateRequest.h"
 #import "VNCFileHandle.h"
 #import "VNCFrameBuffer.h"
