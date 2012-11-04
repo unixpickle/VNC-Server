@@ -6,11 +6,12 @@
 //  Copyright (c) 2012 Alex Nichol. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 #import "VNCServer.h"
 
 @interface ServerMain : NSObject <VNCServerDelegate, VNCServerConnectionDelegate> {
     VNCServer * server;
+    VNCFrameBuffer * frameBuffer;
 }
 
 - (void)serverMain;

@@ -25,6 +25,9 @@
 - (BOOL)readClientInit:(BOOL *)allowOtherClients;
 - (BOOL)sendServerInit;
 
+// main connection loop
+- (void)connectionDisplayLoop;
+
 @end
 
 @implementation VNCServerConnection
@@ -51,6 +54,27 @@
     NSAssert(!backgroundThread || !handle, @"Cannot begin negotiation more than once.");
     backgroundThread = [[NSThread alloc] initWithTarget:self selector:@selector(connectionMain) object:self];
     [backgroundThread start];
+}
+
+- (BOOL)sendRegion:(VNCPixelRegion)region ofFrameBuffer:(VNCFrameBuffer *)fb {
+    NSData * encoded = [pixelEncoder encodeRegion:region frameBuffer:fb];
+    UInt16 typeAndPadding = 0;
+    UInt16 numberBig = CFSwapInt16HostToBig(1);
+    if (![handle writeData:&typeAndPadding ofLength:2]) return NO;
+    if (![handle writeData:&numberBig ofLength:2]) return NO;
+    // write a rectangle
+    UInt16 xBig = CFSwapInt16HostToBig(region.x);
+    UInt16 yBig = CFSwapInt16HostToBig(region.y);
+    UInt16 widthBig = CFSwapInt16HostToBig(region.width);
+    UInt16 heightBig = CFSwapInt16HostToBig(region.height);
+    SInt32 typeBig = CFSwapInt32HostToBig([pixelEncoder encodingTypeValue]);
+    if (![handle writeData:&xBig ofLength:2]) return NO;
+    if (![handle writeData:&yBig ofLength:2]) return NO;
+    if (![handle writeData:&widthBig ofLength:2]) return NO;
+    if (![handle writeData:&heightBig ofLength:2]) return NO;
+    if (![handle writeData:&typeBig ofLength:4]) return NO;
+    if (![handle writeData:[encoded bytes] ofLength:[encoded length]]) return NO;
+    return YES;
 }
 
 #pragma mark - Private -
@@ -94,7 +118,12 @@
             return;
         }
         
-        NSLog(@"they got in!");
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            if ([delegate respondsToSelector:@selector(serverConnectionAuthenticationSuccessful:)]) {
+                [delegate serverConnectionAuthenticationSuccessful:self];
+            }
+        });
+        
         BOOL allowOthers = NO;
         if (![self readClientInit:&allowOthers]) {
             [self delegateError];
@@ -105,23 +134,7 @@
             return;
         }
         
-        while (YES) {
-            // read a packet
-            UInt8 nextType = 0;
-            if (![handle readData:&nextType ofLength:1]) {
-                [self delegateError];
-                return;
-            }
-            Class c = [VNCClientPacket classForPacketType:nextType];
-            if (c == Nil) break;
-            
-            VNCClientPacket * packet = [[c alloc] initByReading:handle];
-            NSLog(@"got packet: %@", packet);
-            
-            [NSThread sleepForTimeInterval:0.1];
-        }
-        
-        NSLog(@"closing DOWNNN");
+        [self connectionDisplayLoop];
         
         // close the handle on success
         [handle close];
@@ -250,11 +263,54 @@
 - (BOOL)sendServerInit {
     VNCServerInitPacket * serverInit = [[VNCServerInitPacket alloc] init];
     [serverInit setDefaultsWithSize:displaySize];
+    pixelFormat = serverInit.pixelFormat;
     NSData * data = [serverInit encode];
     if (![handle writeData:[data bytes] ofLength:[data length]]) {
         return NO;
     }
     return YES;
+}
+
+#pragma mark Display Loop
+
+- (void)connectionDisplayLoop {
+    while (YES) {
+        // read a packet
+        UInt8 nextType = 0;
+        if (![handle readData:&nextType ofLength:1]) {
+            [self delegateError];
+            return;
+        }
+        Class c = [VNCClientPacket classForPacketType:nextType];
+        if (c == Nil) break;
+        
+        VNCClientPacket * packet = [[c alloc] initByReading:handle];
+        if ([packet isKindOfClass:[VNCSetEncodings class]]) {
+            VNCPixelFormatter * formatter = [VNCPixelFormatter formatterForPixelFormat:pixelFormat];
+            VNCSetEncodings * setEncs = (VNCSetEncodings *)packet;
+            Class c = [VNCPixelEncoder preferredEncoderFromChoices:setEncs.encodings];
+            pixelEncoder = [[c alloc] initWithFormatter:formatter];
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                if ([delegate respondsToSelector:@selector(serverConnectionPixelsEncodable:)]) {
+                    [delegate serverConnectionPixelsEncodable:self];
+                }
+            });
+        } else if ([packet isKindOfClass:[VNCFBUpdateRequest class]]) {
+            VNCFBUpdateRequest * updateReq = (VNCFBUpdateRequest *)packet;
+            VNCPixelRegion region;
+            region.x = updateReq.xposition;
+            region.y = updateReq.yposition;
+            region.width = updateReq.width;
+            region.height = updateReq.height;
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                if ([delegate respondsToSelector:@selector(serverConnection:regionRequested:)]) {
+                    [delegate serverConnection:self regionRequested:region];
+                }
+            });
+        }
+        
+        [NSThread sleepForTimeInterval:0.1];
+    }
 }
 
 @end

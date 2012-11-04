@@ -10,8 +10,13 @@
 
 #import "VNCAuthFlow.h"
 #import "VNCClientPacket.h"
+#import "VNCFBUpdateRequest.h"
 #import "VNCFileHandle.h"
+#import "VNCFrameBuffer.h"
+#import "VNCPixelEncoder.h"
 #import "VNCServerInitPacket.h"
+#import "VNCSetEncodings.h"
+#import "VNCSetPixelFormat.h"
 #import "VNCVersion.h"
 
 typedef enum {
@@ -28,6 +33,9 @@ typedef enum {
 - (void)serverConnectionAuthenticationSuccessful:(VNCServerConnection *)connection;
 - (void)serverConnectionAuthenticationFailed:(VNCServerConnection *)connection;
 
+- (void)serverConnectionPixelsEncodable:(VNCServerConnection *)connection;
+- (void)serverConnection:(VNCServerConnection *)connection regionRequested:(VNCPixelRegion)region;
+
 @end
 
 @interface VNCServerConnection : NSObject {
@@ -39,6 +47,9 @@ typedef enum {
     __weak id<VNCServerConnectionDelegate> delegate;
     
     NSThread * backgroundThread;
+    
+    VNCPixelFormat pixelFormat;
+    VNCPixelEncoder * pixelEncoder;
 }
 
 @property (nonatomic, weak) id<VNCServerConnectionDelegate> delegate;
@@ -46,5 +57,7 @@ typedef enum {
 - (id)initWithHandle:(VNCFileHandle *)aHandle;
 - (void)closeConnection;
 - (void)beginNegotiationWithSize:(CGSize)size authType:(VNCAuthenticationType)type authKey:(NSString *)keyOrNil;
+
+- (BOOL)sendRegion:(VNCPixelRegion)region ofFrameBuffer:(VNCFrameBuffer *)fb;
 
 @end
