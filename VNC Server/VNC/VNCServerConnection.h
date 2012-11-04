@@ -14,6 +14,7 @@
 #import "VNCFileHandle.h"
 #import "VNCFrameBuffer.h"
 #import "VNCPixelEncoder.h"
+#import "VNCPointerEvent.h"
 #import "VNCServerInitPacket.h"
 #import "VNCSetEncodings.h"
 #import "VNCSetPixelFormat.h"
@@ -35,6 +36,7 @@ typedef enum {
 
 - (void)serverConnectionPixelsEncodable:(VNCServerConnection *)connection;
 - (void)serverConnection:(VNCServerConnection *)connection regionRequested:(VNCPixelRegion)region;
+- (void)serverConnection:(VNCServerConnection *)connection pointerEvent:(VNCPointerEvent *)event;
 
 @end
 
@@ -58,6 +60,7 @@ typedef enum {
 - (void)closeConnection;
 - (void)beginNegotiationWithSize:(CGSize)size authType:(VNCAuthenticationType)type authKey:(NSString *)keyOrNil;
 
+- (BOOL)prepareToSendRegions:(NSUInteger)numRegions;
 - (BOOL)sendRegion:(VNCPixelRegion)region ofFrameBuffer:(VNCFrameBuffer *)fb;
 
 @end

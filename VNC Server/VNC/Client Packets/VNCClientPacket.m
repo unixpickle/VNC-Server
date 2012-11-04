@@ -10,13 +10,15 @@
 #import "VNCSetPixelFormat.h"
 #import "VNCSetEncodings.h"
 #import "VNCFBUpdateRequest.h"
+#import "VNCPointerEvent.h"
 
 @implementation VNCClientPacket
 
 + (Class)classForPacketType:(UInt8)type {
     NSDictionary * dict = @{@0: [VNCSetPixelFormat class],
                             @2: [VNCSetEncodings class],
-                            @3: [VNCFBUpdateRequest class]};
+                            @3: [VNCFBUpdateRequest class],
+                            @5: [VNCPointerEvent class]};
     return [dict objectForKey:[NSNumber numberWithUnsignedChar:type]];
 }
 

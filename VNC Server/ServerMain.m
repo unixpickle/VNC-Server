@@ -37,9 +37,25 @@
                                  authKey:@"password"];
 }
 
+- (void)serverConnectionAuthenticationFailed:(VNCServerConnection *)connection {
+    NSLog(@"Client failed to authenticate");
+}
+
+- (void)serverConnectionAuthenticationSuccessful:(VNCServerConnection *)connection {
+    NSLog(@"Client authenticated successfully");
+}
+
 - (void)serverConnection:(VNCServerConnection *)connection regionRequested:(VNCPixelRegion)region {
-    NSLog(@"region requested.");
+    [connection prepareToSendRegions:1];
     [connection sendRegion:region ofFrameBuffer:frameBuffer];
+}
+
+- (void)serverConnection:(VNCServerConnection *)connection failedWithError:(NSError *)error {
+    NSLog(@"error: %@", error);
+}
+
+- (void)serverConnection:(VNCServerConnection *)connection pointerEvent:(VNCPointerEvent *)event {
+    NSLog(@"pointer event: %@", event);
 }
 
 @end

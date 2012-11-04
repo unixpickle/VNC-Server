@@ -10,33 +10,43 @@
 
 @implementation VNCFileHandle
 
-- (id)initWithFilePointer:(FILE *)anFP {
-    if ((self = [super init])) {
-        fp = anFP;
-        fd = fileno(anFP);
-        lock = [[NSLock alloc] init];
-    }
-    return self;
-}
-
 - (id)initWithFileDescriptor:(int)anFd {
-    self = [self initWithFilePointer:fdopen(anFd, "r+")];
+    if ((self = [super init])) {
+        fd = anFd;
+        lock = [[NSLock alloc] init];
+        fileHandle = [[NSFileHandle alloc] initWithFileDescriptor:fd closeOnDealloc:NO];
+    }
     return self;
 }
 
 - (BOOL)readData:(void *)ptr ofLength:(NSUInteger)length {
     if (![self isOpen]) return NO;
-    BOOL res = fread(ptr, 1, length, fp) == length;
-    if (!res) [self close];
-    return res;
+    
+    NSMutableData * accum = [NSMutableData data];
+    while ([accum length] < length) {
+        NSData * d = [fileHandle readDataOfLength:length - [accum length]];
+        if ([d length] == 0 || !d) {
+            [self close];
+            return NO;
+        }
+        [accum appendData:d];
+    }
+    
+    memcpy(ptr, [accum bytes], [accum length]);
+    return YES;
 }
 
 - (BOOL)writeData:(const void *)ptr ofLength:(NSUInteger)length {
     if (![self isOpen]) return NO;
-    BOOL res = fwrite(ptr, 1, length, fp) == length;
-    if (!res) [self close];
-    else fflush(fp);
-    return res;
+    NSData * data = [NSData dataWithBytes:ptr length:length];
+    BOOL failed = NO;
+    @try {
+        [fileHandle writeData:data];
+    } @catch (NSException * e) {
+        failed = YES;
+    }
+    if (failed) [self close];
+    return !failed;
 }
 
 - (void)close {
@@ -53,10 +63,6 @@
     BOOL flag = fd >= 0;
     [lock unlock];
     return flag;
-}
-
-- (void)dealloc {
-    fclose(fp);
 }
 
 @end

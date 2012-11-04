@@ -11,6 +11,7 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
+        signal(SIGPIPE, SIG_IGN);
         ServerMain * main = [[ServerMain alloc] init];
         [main serverMain];
         [[NSRunLoop currentRunLoop] run];

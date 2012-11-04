@@ -9,10 +9,14 @@
 #import "VNCZRLEPixelEncoder.h"
 #import "VNCRawPixelEncoder.h"
 
+static BOOL pixelsAreClose(VNCFrameBufferPixel p1, VNCFrameBufferPixel p2);
+static NSData * encodeRLELength(NSUInteger len);
+
 @interface VNCZRLEPixelEncoder (Private)
 
 - (NSData *)compressChunk:(NSData *)data;
 - (NSData *)encodeTileRegion:(VNCPixelRegion)region frameBuffer:(VNCFrameBuffer *)fb;
+- (NSData *)encodeRLE:(VNCPixelRegion)region frameBuffer:(VNCFrameBuffer *)fb;
 
 @end
 
@@ -36,7 +40,7 @@
         stream.zfree = Z_NULL;
         stream.opaque = Z_NULL;
         deflateInit(&stream, Z_BEST_COMPRESSION);
-        self.encodeSubtype = VNCZRLEEncodingSubtypeRaw;
+        self.encodeSubtype = VNCZRLEEncodingSubtypeRLE;
     }
     return self;
 }
@@ -63,7 +67,9 @@
             [toCompress appendData:[self encodeTileRegion:subRegion frameBuffer:fb]];
         }
     }
+    
     NSData * deflated = [self compressChunk:toCompress];
+    
     NSMutableData * realData = [NSMutableData dataWithCapacity:4 + [deflated length]];
     UInt32 lenBig = CFSwapInt32HostToBig((uint32_t)[deflated length]);
     [realData appendBytes:&lenBig length:4];
@@ -120,6 +126,8 @@
     
     if (encodeSubtype == VNCZRLEEncodingSubtypeRaw) {
         subencodingValue = 0;
+    } else if (encodeSubtype == VNCZRLEEncodingSubtypeRLE) {
+        subencodingValue = 128;
     }
     
     NSMutableData * data = [NSMutableData data];
@@ -127,9 +135,65 @@
     
     if (encodeSubtype == VNCZRLEEncodingSubtypeRaw) {
         [data appendData:[subEncoder encodeRegion:region frameBuffer:fb]];
+    } else if (encodeSubtype == VNCZRLEEncodingSubtypeRLE) {
+        [data appendData:[self encodeRLE:region frameBuffer:fb]];
     }
     
     return data;
 }
 
+- (NSData *)encodeRLE:(VNCPixelRegion)region frameBuffer:(VNCFrameBuffer *)fb {
+    NSMutableData * runData = [NSMutableData data];
+    VNCFrameBufferPixel * basePixel = [fb pixelAtX:region.x y:region.y];
+    NSUInteger runLength = 0;
+    NSUInteger pixelSize = [formatter bytesPerPixel];
+    UInt8 * pixData = (UInt8 *)malloc(pixelSize);
+    
+    for (NSUInteger y = region.y; y < region.height + region.y; y++) {
+        for (NSUInteger x = region.x; x < region.width + region.x; x++) {
+            VNCFrameBufferPixel * pixel = [fb pixelAtX:x y:y];
+            if (runLength == 0) {
+                basePixel = pixel;
+                runLength = 1;
+            } else {
+                if (pixelsAreClose(*basePixel, *pixel)) {
+                    runLength += 1;
+                } else {
+                    [formatter getPixel:pixData forRed:basePixel->red green:basePixel->green blue:basePixel->blue];
+                    [runData appendBytes:pixData length:pixelSize];
+                    [runData appendData:encodeRLELength(runLength)];
+                    basePixel = pixel;
+                    runLength = 1;
+                }
+            }
+        }
+    }
+    
+    if (runLength > 0) {
+        [formatter getPixel:pixData forRed:basePixel->red green:basePixel->green blue:basePixel->blue];
+        [runData appendBytes:pixData length:pixelSize];
+        [runData appendData:encodeRLELength(runLength)];
+    }
+    
+    free(pixData);
+    return runData;
+}
+
 @end
+
+static BOOL pixelsAreClose(VNCFrameBufferPixel p1, VNCFrameBufferPixel p2) {
+    if (ABS((int)p1.red - (int)p2.red) > 5) return NO;
+    if (ABS((int)p1.green - (int)p2.green) > 5) return NO;
+    if (ABS((int)p1.blue - (int)p2.blue) > 5) return NO;
+    return YES;
+}
+
+static NSData * encodeRLELength(NSUInteger i) {
+    int len = (i - 1) / 255 + 1;
+    char * buff = (char *)malloc(len);
+    for (int i = 0; i < len - 1; i++) {
+        buff[i] = 255;
+    }
+    buff[len - 1] = (i - 1) % 255;
+    return [NSData dataWithBytesNoCopy:buff length:len freeWhenDone:YES];
+}

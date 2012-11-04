@@ -13,7 +13,8 @@
 #include <zlib.h>
 
 typedef enum {
-    VNCZRLEEncodingSubtypeRaw
+    VNCZRLEEncodingSubtypeRaw,
+    VNCZRLEEncodingSubtypeRLE
 } VNCZRLEEncodingSubtype;
 
 @interface VNCZRLEPixelEncoder : VNCPixelEncoder {

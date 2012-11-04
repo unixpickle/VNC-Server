@@ -9,12 +9,11 @@
 #import "VNCHandle.h"
 
 @interface VNCFileHandle : VNCHandle {
-    FILE * fp;
+    NSFileHandle * fileHandle;
     int fd;
     NSLock * lock;
 }
 
-- (id)initWithFilePointer:(FILE *)anFP;
 - (id)initWithFileDescriptor:(int)fd;
 
 @end

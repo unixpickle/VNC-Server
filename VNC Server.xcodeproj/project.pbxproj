@@ -37,6 +37,8 @@
 		FAD57F521646F70600D2AD78 /* VNCZRLEPixelEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD57F511646F70600D2AD78 /* VNCZRLEPixelEncoder.m */; };
 		FAD57F541646F72F00D2AD78 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FAD57F531646F72F00D2AD78 /* libz.dylib */; };
 		FAD57F56164704E800D2AD78 /* fecessquare.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = FAD57F55164704E500D2AD78 /* fecessquare.jpg */; };
+		FAD57F611647127300D2AD78 /* VNCPointerEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD57F601647127300D2AD78 /* VNCPointerEvent.m */; };
+		FAD57F65164717B700D2AD78 /* VNCKeyboardEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD57F64164717B700D2AD78 /* VNCKeyboardEvent.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -110,6 +112,10 @@
 		FAD57F511646F70600D2AD78 /* VNCZRLEPixelEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VNCZRLEPixelEncoder.m; sourceTree = "<group>"; };
 		FAD57F531646F72F00D2AD78 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		FAD57F55164704E500D2AD78 /* fecessquare.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fecessquare.jpg; sourceTree = "<group>"; };
+		FAD57F5F1647127300D2AD78 /* VNCPointerEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VNCPointerEvent.h; sourceTree = "<group>"; };
+		FAD57F601647127300D2AD78 /* VNCPointerEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VNCPointerEvent.m; sourceTree = "<group>"; };
+		FAD57F63164717B700D2AD78 /* VNCKeyboardEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VNCKeyboardEvent.h; sourceTree = "<group>"; };
+		FAD57F64164717B700D2AD78 /* VNCKeyboardEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VNCKeyboardEvent.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +219,10 @@
 				FAD57EFF1646C7A200D2AD78 /* VNCSetEncodings.m */,
 				FAD57F041646C9D800D2AD78 /* VNCFBUpdateRequest.h */,
 				FAD57F051646C9D800D2AD78 /* VNCFBUpdateRequest.m */,
+				FAD57F5F1647127300D2AD78 /* VNCPointerEvent.h */,
+				FAD57F601647127300D2AD78 /* VNCPointerEvent.m */,
+				FAD57F63164717B700D2AD78 /* VNCKeyboardEvent.h */,
+				FAD57F64164717B700D2AD78 /* VNCKeyboardEvent.m */,
 			);
 			path = "Client Packets";
 			sourceTree = "<group>";
@@ -345,6 +355,8 @@
 				FAD57F4A1646E6BC00D2AD78 /* VNCColorMap.m in Sources */,
 				FAD57F4B1646E6BC00D2AD78 /* VNCGraystyleColorMap.m in Sources */,
 				FAD57F521646F70600D2AD78 /* VNCZRLEPixelEncoder.m in Sources */,
+				FAD57F611647127300D2AD78 /* VNCPointerEvent.m in Sources */,
+				FAD57F65164717B700D2AD78 /* VNCKeyboardEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

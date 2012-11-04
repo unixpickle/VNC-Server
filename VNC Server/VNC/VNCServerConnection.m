@@ -56,13 +56,16 @@
     [backgroundThread start];
 }
 
-- (BOOL)sendRegion:(VNCPixelRegion)region ofFrameBuffer:(VNCFrameBuffer *)fb {
-    NSData * encoded = [pixelEncoder encodeRegion:region frameBuffer:fb];
+- (BOOL)prepareToSendRegions:(NSUInteger)numRegions {
     UInt16 typeAndPadding = 0;
     UInt16 numberBig = CFSwapInt16HostToBig(1);
     if (![handle writeData:&typeAndPadding ofLength:2]) return NO;
     if (![handle writeData:&numberBig ofLength:2]) return NO;
-    // write a rectangle
+    return YES;
+}
+
+- (BOOL)sendRegion:(VNCPixelRegion)region ofFrameBuffer:(VNCFrameBuffer *)fb {
+    NSData * encoded = [pixelEncoder encodeRegion:region frameBuffer:fb];
     UInt16 xBig = CFSwapInt16HostToBig(region.x);
     UInt16 yBig = CFSwapInt16HostToBig(region.y);
     UInt16 widthBig = CFSwapInt16HostToBig(region.width);
@@ -282,7 +285,11 @@
             return;
         }
         Class c = [VNCClientPacket classForPacketType:nextType];
-        if (c == Nil) break;
+        if (c == Nil) {
+            errno = ENOTSUP;
+            [self delegateError];
+            return;
+        }
         
         VNCClientPacket * packet = [[c alloc] initByReading:handle];
         if ([packet isKindOfClass:[VNCSetEncodings class]]) {
@@ -307,9 +314,13 @@
                     [delegate serverConnection:self regionRequested:region];
                 }
             });
+        } else if ([packet isKindOfClass:[VNCPointerEvent class]]) {
+            dispatch_sync(dispatch_get_current_queue(), ^{
+                if ([delegate respondsToSelector:@selector(serverConnection:pointerEvent:)]) {
+                    [delegate serverConnection:self pointerEvent:(VNCPointerEvent *)packet];
+                }
+            });
         }
-        
-        [NSThread sleepForTimeInterval:0.1];
     }
 }
 
