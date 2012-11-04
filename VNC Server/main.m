@@ -7,15 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ServerMain.h"
 
-int main(int argc, const char * argv[])
-{
-
+int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        
-        // insert code here...
-        NSLog(@"Hello, World!");
-        
+        ServerMain * main = [[ServerMain alloc] init];
+        [main serverMain];
+        [[NSRunLoop currentRunLoop] run];
     }
     return 0;
 }

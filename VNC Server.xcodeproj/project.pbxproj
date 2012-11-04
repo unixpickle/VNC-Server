@@ -10,6 +10,23 @@
 		FA71A6F016459AD8000A2423 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA71A6EF16459AD8000A2423 /* Foundation.framework */; };
 		FA71A6F316459AD8000A2423 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA71A6F216459AD8000A2423 /* main.m */; };
 		FA71A6F716459AD8000A2423 /* VNC_Server.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = FA71A6F616459AD8000A2423 /* VNC_Server.1 */; };
+		FA71A7041645A424000A2423 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA71A7031645A424000A2423 /* Security.framework */; };
+		FAC8F7E31645E26500FBDA12 /* ServerMain.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC8F7E21645E26500FBDA12 /* ServerMain.m */; };
+		FAD57EF21646C58600D2AD78 /* VNCAuthFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD57EE71646C58600D2AD78 /* VNCAuthFlow.m */; };
+		FAD57EF31646C58600D2AD78 /* VNCServerInitPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD57EE91646C58600D2AD78 /* VNCServerInitPacket.m */; };
+		FAD57EF41646C58600D2AD78 /* VNCVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD57EEB1646C58600D2AD78 /* VNCVersion.m */; };
+		FAD57EF51646C58600D2AD78 /* VNCPixelFormat.c in Sources */ = {isa = PBXBuildFile; fileRef = FAD57EEC1646C58600D2AD78 /* VNCPixelFormat.c */; };
+		FAD57EF61646C58600D2AD78 /* VNCServer.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD57EEF1646C58600D2AD78 /* VNCServer.m */; };
+		FAD57EF71646C58600D2AD78 /* VNCServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD57EF11646C58600D2AD78 /* VNCServerConnection.m */; };
+		FAD57EFA1646C5A700D2AD78 /* VNCClientPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD57EF91646C5A700D2AD78 /* VNCClientPacket.m */; };
+		FAD57EFD1646C65400D2AD78 /* VNCSetPixelFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD57EFC1646C65400D2AD78 /* VNCSetPixelFormat.m */; };
+		FAD57F001646C7A200D2AD78 /* VNCSetEncodings.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD57EFF1646C7A200D2AD78 /* VNCSetEncodings.m */; };
+		FAD57F061646C9D800D2AD78 /* VNCFBUpdateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD57F051646C9D800D2AD78 /* VNCFBUpdateRequest.m */; };
+		FAD57F091646CA5E00D2AD78 /* VNCHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD57F081646CA5E00D2AD78 /* VNCHandle.m */; };
+		FAD57F0C1646CAB100D2AD78 /* VNCFileHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD57F0B1646CAB100D2AD78 /* VNCFileHandle.m */; };
+		FAD57F101646DA3100D2AD78 /* VNCPixelFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD57F0F1646DA3100D2AD78 /* VNCPixelFormatter.m */; };
+		FAD57F131646DA6E00D2AD78 /* VNCColorMap.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD57F121646DA6E00D2AD78 /* VNCColorMap.m */; };
+		FAD57F161646DD3100D2AD78 /* VNCTruePixelFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD57F151646DD3100D2AD78 /* VNCTruePixelFormatter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +48,39 @@
 		FA71A6F216459AD8000A2423 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FA71A6F516459AD8000A2423 /* VNC Server-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VNC Server-Prefix.pch"; sourceTree = "<group>"; };
 		FA71A6F616459AD8000A2423 /* VNC_Server.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = VNC_Server.1; sourceTree = "<group>"; };
+		FA71A7031645A424000A2423 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		FAC8F7E11645E26500FBDA12 /* ServerMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerMain.h; sourceTree = "<group>"; };
+		FAC8F7E21645E26500FBDA12 /* ServerMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerMain.m; sourceTree = "<group>"; };
+		FAD57EE61646C58600D2AD78 /* VNCAuthFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VNCAuthFlow.h; sourceTree = "<group>"; };
+		FAD57EE71646C58600D2AD78 /* VNCAuthFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VNCAuthFlow.m; sourceTree = "<group>"; };
+		FAD57EE81646C58600D2AD78 /* VNCServerInitPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VNCServerInitPacket.h; sourceTree = "<group>"; };
+		FAD57EE91646C58600D2AD78 /* VNCServerInitPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VNCServerInitPacket.m; sourceTree = "<group>"; };
+		FAD57EEA1646C58600D2AD78 /* VNCVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VNCVersion.h; sourceTree = "<group>"; };
+		FAD57EEB1646C58600D2AD78 /* VNCVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VNCVersion.m; sourceTree = "<group>"; };
+		FAD57EEC1646C58600D2AD78 /* VNCPixelFormat.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = VNCPixelFormat.c; sourceTree = "<group>"; };
+		FAD57EED1646C58600D2AD78 /* VNCPixelFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VNCPixelFormat.h; sourceTree = "<group>"; };
+		FAD57EEE1646C58600D2AD78 /* VNCServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VNCServer.h; sourceTree = "<group>"; };
+		FAD57EEF1646C58600D2AD78 /* VNCServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VNCServer.m; sourceTree = "<group>"; };
+		FAD57EF01646C58600D2AD78 /* VNCServerConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VNCServerConnection.h; sourceTree = "<group>"; };
+		FAD57EF11646C58600D2AD78 /* VNCServerConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VNCServerConnection.m; sourceTree = "<group>"; };
+		FAD57EF81646C5A700D2AD78 /* VNCClientPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VNCClientPacket.h; sourceTree = "<group>"; };
+		FAD57EF91646C5A700D2AD78 /* VNCClientPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VNCClientPacket.m; sourceTree = "<group>"; };
+		FAD57EFB1646C65400D2AD78 /* VNCSetPixelFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VNCSetPixelFormat.h; sourceTree = "<group>"; };
+		FAD57EFC1646C65400D2AD78 /* VNCSetPixelFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VNCSetPixelFormat.m; sourceTree = "<group>"; };
+		FAD57EFE1646C7A200D2AD78 /* VNCSetEncodings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VNCSetEncodings.h; sourceTree = "<group>"; };
+		FAD57EFF1646C7A200D2AD78 /* VNCSetEncodings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VNCSetEncodings.m; sourceTree = "<group>"; };
+		FAD57F041646C9D800D2AD78 /* VNCFBUpdateRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VNCFBUpdateRequest.h; sourceTree = "<group>"; };
+		FAD57F051646C9D800D2AD78 /* VNCFBUpdateRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VNCFBUpdateRequest.m; sourceTree = "<group>"; };
+		FAD57F071646CA5E00D2AD78 /* VNCHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VNCHandle.h; sourceTree = "<group>"; };
+		FAD57F081646CA5E00D2AD78 /* VNCHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VNCHandle.m; sourceTree = "<group>"; };
+		FAD57F0A1646CAB100D2AD78 /* VNCFileHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VNCFileHandle.h; sourceTree = "<group>"; };
+		FAD57F0B1646CAB100D2AD78 /* VNCFileHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VNCFileHandle.m; sourceTree = "<group>"; };
+		FAD57F0E1646DA3100D2AD78 /* VNCPixelFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VNCPixelFormatter.h; sourceTree = "<group>"; };
+		FAD57F0F1646DA3100D2AD78 /* VNCPixelFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VNCPixelFormatter.m; sourceTree = "<group>"; };
+		FAD57F111646DA6D00D2AD78 /* VNCColorMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VNCColorMap.h; sourceTree = "<group>"; };
+		FAD57F121646DA6E00D2AD78 /* VNCColorMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VNCColorMap.m; sourceTree = "<group>"; };
+		FAD57F141646DD3100D2AD78 /* VNCTruePixelFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VNCTruePixelFormatter.h; sourceTree = "<group>"; };
+		FAD57F151646DD3100D2AD78 /* VNCTruePixelFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VNCTruePixelFormatter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA71A7041645A424000A2423 /* Security.framework in Frameworks */,
 				FA71A6F016459AD8000A2423 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,6 +99,7 @@
 		FA71A6E016459AD8000A2423 = {
 			isa = PBXGroup;
 			children = (
+				FAD57EE31646C58600D2AD78 /* VNC */,
 				FA71A6F116459AD8000A2423 /* VNC Server */,
 				FA71A6EE16459AD8000A2423 /* Frameworks */,
 				FA71A6EC16459AD8000A2423 /* Products */,
@@ -65,6 +117,7 @@
 		FA71A6EE16459AD8000A2423 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA71A7031645A424000A2423 /* Security.framework */,
 				FA71A6EF16459AD8000A2423 /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -74,6 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				FA71A6F216459AD8000A2423 /* main.m */,
+				FAC8F7E11645E26500FBDA12 /* ServerMain.h */,
+				FAC8F7E21645E26500FBDA12 /* ServerMain.m */,
 				FA71A6F616459AD8000A2423 /* VNC_Server.1 */,
 				FA71A6F416459AD8000A2423 /* Supporting Files */,
 			);
@@ -86,6 +141,68 @@
 				FA71A6F516459AD8000A2423 /* VNC Server-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FAD57EE31646C58600D2AD78 /* VNC */ = {
+			isa = PBXGroup;
+			children = (
+				FAD57F0D1646DA2800D2AD78 /* Graphics Encoding */,
+				FAD57EE41646C58600D2AD78 /* Client Packets */,
+				FAD57EE51646C58600D2AD78 /* Initialization */,
+				FAD57EEC1646C58600D2AD78 /* VNCPixelFormat.c */,
+				FAD57EED1646C58600D2AD78 /* VNCPixelFormat.h */,
+				FAD57EEE1646C58600D2AD78 /* VNCServer.h */,
+				FAD57EEF1646C58600D2AD78 /* VNCServer.m */,
+				FAD57EF01646C58600D2AD78 /* VNCServerConnection.h */,
+				FAD57EF11646C58600D2AD78 /* VNCServerConnection.m */,
+				FAD57F071646CA5E00D2AD78 /* VNCHandle.h */,
+				FAD57F081646CA5E00D2AD78 /* VNCHandle.m */,
+				FAD57F0A1646CAB100D2AD78 /* VNCFileHandle.h */,
+				FAD57F0B1646CAB100D2AD78 /* VNCFileHandle.m */,
+			);
+			name = VNC;
+			path = "VNC Server/VNC";
+			sourceTree = "<group>";
+		};
+		FAD57EE41646C58600D2AD78 /* Client Packets */ = {
+			isa = PBXGroup;
+			children = (
+				FAD57EF81646C5A700D2AD78 /* VNCClientPacket.h */,
+				FAD57EF91646C5A700D2AD78 /* VNCClientPacket.m */,
+				FAD57EFB1646C65400D2AD78 /* VNCSetPixelFormat.h */,
+				FAD57EFC1646C65400D2AD78 /* VNCSetPixelFormat.m */,
+				FAD57EFE1646C7A200D2AD78 /* VNCSetEncodings.h */,
+				FAD57EFF1646C7A200D2AD78 /* VNCSetEncodings.m */,
+				FAD57F041646C9D800D2AD78 /* VNCFBUpdateRequest.h */,
+				FAD57F051646C9D800D2AD78 /* VNCFBUpdateRequest.m */,
+			);
+			path = "Client Packets";
+			sourceTree = "<group>";
+		};
+		FAD57EE51646C58600D2AD78 /* Initialization */ = {
+			isa = PBXGroup;
+			children = (
+				FAD57EE61646C58600D2AD78 /* VNCAuthFlow.h */,
+				FAD57EE71646C58600D2AD78 /* VNCAuthFlow.m */,
+				FAD57EE81646C58600D2AD78 /* VNCServerInitPacket.h */,
+				FAD57EE91646C58600D2AD78 /* VNCServerInitPacket.m */,
+				FAD57EEA1646C58600D2AD78 /* VNCVersion.h */,
+				FAD57EEB1646C58600D2AD78 /* VNCVersion.m */,
+			);
+			path = Initialization;
+			sourceTree = "<group>";
+		};
+		FAD57F0D1646DA2800D2AD78 /* Graphics Encoding */ = {
+			isa = PBXGroup;
+			children = (
+				FAD57F0E1646DA3100D2AD78 /* VNCPixelFormatter.h */,
+				FAD57F0F1646DA3100D2AD78 /* VNCPixelFormatter.m */,
+				FAD57F111646DA6D00D2AD78 /* VNCColorMap.h */,
+				FAD57F121646DA6E00D2AD78 /* VNCColorMap.m */,
+				FAD57F141646DD3100D2AD78 /* VNCTruePixelFormatter.h */,
+				FAD57F151646DD3100D2AD78 /* VNCTruePixelFormatter.m */,
+			);
+			path = "Graphics Encoding";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +257,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA71A6F316459AD8000A2423 /* main.m in Sources */,
+				FAC8F7E31645E26500FBDA12 /* ServerMain.m in Sources */,
+				FAD57EF21646C58600D2AD78 /* VNCAuthFlow.m in Sources */,
+				FAD57EF31646C58600D2AD78 /* VNCServerInitPacket.m in Sources */,
+				FAD57EF41646C58600D2AD78 /* VNCVersion.m in Sources */,
+				FAD57EF51646C58600D2AD78 /* VNCPixelFormat.c in Sources */,
+				FAD57EF61646C58600D2AD78 /* VNCServer.m in Sources */,
+				FAD57EF71646C58600D2AD78 /* VNCServerConnection.m in Sources */,
+				FAD57EFA1646C5A700D2AD78 /* VNCClientPacket.m in Sources */,
+				FAD57EFD1646C65400D2AD78 /* VNCSetPixelFormat.m in Sources */,
+				FAD57F001646C7A200D2AD78 /* VNCSetEncodings.m in Sources */,
+				FAD57F061646C9D800D2AD78 /* VNCFBUpdateRequest.m in Sources */,
+				FAD57F091646CA5E00D2AD78 /* VNCHandle.m in Sources */,
+				FAD57F0C1646CAB100D2AD78 /* VNCFileHandle.m in Sources */,
+				FAD57F101646DA3100D2AD78 /* VNCPixelFormatter.m in Sources */,
+				FAD57F131646DA6E00D2AD78 /* VNCColorMap.m in Sources */,
+				FAD57F161646DD3100D2AD78 /* VNCTruePixelFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +369,7 @@
 				FA71A6FC16459AD8000A2423 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
