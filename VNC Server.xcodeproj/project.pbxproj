@@ -40,6 +40,8 @@
 		FAD57F611647127300D2AD78 /* VNCPointerEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD57F601647127300D2AD78 /* VNCPointerEvent.m */; };
 		FAD57F65164717B700D2AD78 /* VNCKeyboardEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD57F64164717B700D2AD78 /* VNCKeyboardEvent.m */; };
 		FAD57F6916471EA700D2AD78 /* VNCColorMapUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD57F6816471EA700D2AD78 /* VNCColorMapUpdate.m */; };
+		FAE5E3D3164935810011A567 /* VNCCutTextPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE5E3D2164935810011A567 /* VNCCutTextPacket.m */; };
+		FAE5E3D7164936460011A567 /* VNCClientCutText.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE5E3D6164936460011A567 /* VNCClientCutText.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -119,6 +121,10 @@
 		FAD57F64164717B700D2AD78 /* VNCKeyboardEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VNCKeyboardEvent.m; sourceTree = "<group>"; };
 		FAD57F6716471EA700D2AD78 /* VNCColorMapUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VNCColorMapUpdate.h; sourceTree = "<group>"; };
 		FAD57F6816471EA700D2AD78 /* VNCColorMapUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VNCColorMapUpdate.m; sourceTree = "<group>"; };
+		FAE5E3D1164935810011A567 /* VNCCutTextPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VNCCutTextPacket.h; sourceTree = "<group>"; };
+		FAE5E3D2164935810011A567 /* VNCCutTextPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VNCCutTextPacket.m; sourceTree = "<group>"; };
+		FAE5E3D5164936460011A567 /* VNCClientCutText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VNCClientCutText.h; sourceTree = "<group>"; };
+		FAE5E3D6164936460011A567 /* VNCClientCutText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VNCClientCutText.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +202,8 @@
 				FAD57EE51646C58600D2AD78 /* Initialization */,
 				FAD57F6716471EA700D2AD78 /* VNCColorMapUpdate.h */,
 				FAD57F6816471EA700D2AD78 /* VNCColorMapUpdate.m */,
+				FAE5E3D1164935810011A567 /* VNCCutTextPacket.h */,
+				FAE5E3D2164935810011A567 /* VNCCutTextPacket.m */,
 				FAD57F0A1646CAB100D2AD78 /* VNCFileHandle.h */,
 				FAD57F0B1646CAB100D2AD78 /* VNCFileHandle.m */,
 				FAD57F3F1646E48000D2AD78 /* VNCFrameBuffer.h */,
@@ -228,6 +236,8 @@
 				FAD57F64164717B700D2AD78 /* VNCKeyboardEvent.m */,
 				FAD57F5F1647127300D2AD78 /* VNCPointerEvent.h */,
 				FAD57F601647127300D2AD78 /* VNCPointerEvent.m */,
+				FAE5E3D5164936460011A567 /* VNCClientCutText.h */,
+				FAE5E3D6164936460011A567 /* VNCClientCutText.m */,
 			);
 			path = "Client Packets";
 			sourceTree = "<group>";
@@ -363,6 +373,8 @@
 				FAD57F611647127300D2AD78 /* VNCPointerEvent.m in Sources */,
 				FAD57F65164717B700D2AD78 /* VNCKeyboardEvent.m in Sources */,
 				FAD57F6916471EA700D2AD78 /* VNCColorMapUpdate.m in Sources */,
+				FAE5E3D3164935810011A567 /* VNCCutTextPacket.m in Sources */,
+				FAE5E3D7164936460011A567 /* VNCClientCutText.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -94,6 +94,14 @@
     return YES;
 }
 
+- (BOOL)sendServerCutText:(NSString *)text {
+    VNCCutTextPacket * pack = [[VNCCutTextPacket alloc] init];
+    pack.cutText = text;
+    NSData * data = [pack encodeServerCutText];
+    if (![handle writeData:[data bytes] ofLength:[data length]]) return NO;
+    return YES;
+}
+
 #pragma mark - Private -
 
 - (void)connectionMain {
@@ -340,6 +348,12 @@
             dispatch_sync(dispatch_get_current_queue(), ^{
                 if ([delegate respondsToSelector:@selector(serverConnection:keyboardEvent:)]) {
                     [delegate serverConnection:self keyboardEvent:(VNCKeyboardEvent *)packet];
+                }
+            });
+        } else if ([packet isKindOfClass:[VNCClientCutText class]]) {
+            dispatch_sync(dispatch_get_current_queue(), ^{
+                if ([delegate respondsToSelector:@selector(serverConnection:clientCutText:)]) {
+                    [delegate serverConnection:self clientCutText:(VNCClientCutText *)packet];
                 }
             });
         }

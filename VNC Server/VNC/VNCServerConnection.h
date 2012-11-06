@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 
 #import "VNCAuthFlow.h"
+#import "VNCClientCutText.h"
 #import "VNCClientPacket.h"
 #import "VNCColorMapUpdate.h"
+#import "VNCCutTextPacket.h"
 #import "VNCFBUpdateRequest.h"
 #import "VNCFileHandle.h"
 #import "VNCFrameBuffer.h"
@@ -40,6 +42,7 @@ typedef enum {
 - (void)serverConnection:(VNCServerConnection *)connection regionRequested:(VNCPixelRegion)region;
 - (void)serverConnection:(VNCServerConnection *)connection pointerEvent:(VNCPointerEvent *)event;
 - (void)serverConnection:(VNCServerConnection *)connection keyboardEvent:(VNCKeyboardEvent *)event;
+- (void)serverConnection:(VNCServerConnection *)connection clientCutText:(VNCClientCutText *)text;
 
 @end
 
@@ -65,5 +68,6 @@ typedef enum {
 
 - (BOOL)prepareToSendRegions:(NSUInteger)numRegions;
 - (BOOL)sendRegion:(VNCPixelRegion)region ofFrameBuffer:(VNCFrameBuffer *)fb;
+- (BOOL)sendServerCutText:(NSString *)text;
 
 @end

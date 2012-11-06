@@ -7,6 +7,8 @@
 //
 
 #import "VNCClientPacket.h"
+
+#import "VNCClientCutText.h"
 #import "VNCSetPixelFormat.h"
 #import "VNCSetEncodings.h"
 #import "VNCFBUpdateRequest.h"
@@ -20,7 +22,8 @@
                             @2: [VNCSetEncodings class],
                             @3: [VNCFBUpdateRequest class],
                             @4: [VNCKeyboardEvent class],
-                            @5: [VNCPointerEvent class]};
+                            @5: [VNCPointerEvent class],
+                            @6: [VNCClientCutText class]};
     return [dict objectForKey:[NSNumber numberWithUnsignedChar:type]];
 }
 
