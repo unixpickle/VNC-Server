@@ -339,19 +339,19 @@
                 }
             });
         } else if ([packet isKindOfClass:[VNCPointerEvent class]]) {
-            dispatch_sync(dispatch_get_current_queue(), ^{
+            dispatch_sync(dispatch_get_main_queue(), ^{
                 if ([delegate respondsToSelector:@selector(serverConnection:pointerEvent:)]) {
                     [delegate serverConnection:self pointerEvent:(VNCPointerEvent *)packet];
                 }
             });
         } else if ([packet isKindOfClass:[VNCKeyboardEvent class]]) {
-            dispatch_sync(dispatch_get_current_queue(), ^{
+            dispatch_sync(dispatch_get_main_queue(), ^{
                 if ([delegate respondsToSelector:@selector(serverConnection:keyboardEvent:)]) {
                     [delegate serverConnection:self keyboardEvent:(VNCKeyboardEvent *)packet];
                 }
             });
         } else if ([packet isKindOfClass:[VNCClientCutText class]]) {
-            dispatch_sync(dispatch_get_current_queue(), ^{
+            dispatch_sync(dispatch_get_main_queue(), ^{
                 if ([delegate respondsToSelector:@selector(serverConnection:clientCutText:)]) {
                     [delegate serverConnection:self clientCutText:(VNCClientCutText *)packet];
                 }

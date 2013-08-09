@@ -189,7 +189,7 @@ static BOOL pixelsAreClose(VNCFrameBufferPixel p1, VNCFrameBufferPixel p2) {
 }
 
 static NSData * encodeRLELength(NSUInteger i) {
-    int len = (i - 1) / 255 + 1;
+    int len = (int)((i - 1) / 255 + 1);
     char * buff = (char *)malloc(len);
     for (int i = 0; i < len - 1; i++) {
         buff[i] = 255;
